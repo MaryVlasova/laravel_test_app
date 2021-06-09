@@ -74,8 +74,9 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, User $user)
     {
-        $response = $user->update($request->only(['name', 'email']));
-        return view('user_form', compact('user', 'response'));
+        $user->update($request->only(['name', 'email']));
+        $request->session()->flash('success', 'The user '.$user->name. ' was updated');
+        return view('user_form', compact('user'));
     }
 
     /**
@@ -87,6 +88,6 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->withSuccess('The user '.$user->name. ' was deleted');
     }
 }

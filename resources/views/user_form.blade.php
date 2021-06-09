@@ -50,19 +50,10 @@
     <div class="mb-3">
         <button type="bnt bnt-success" class="btn btn-primary">Save</button>
     </div>
-    @isset($response)
-        @if ($response)
-            <div class="alert alert-success" role="alert">
-                Data updated successfully
-            </div>
-        @else
-            <div class="alert alert-danger" role="alert">
-                Something went wrong
-            </div>           
-        @endif
-    @endisset
 
-
+    @if (session('success'))
+        <div class="alert alert-success" role="alert">{{session('success')}}</div> 
+    @endif   
   
 </form>
 @endsection
