@@ -14,7 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::get();           
+        $users = User::get();   
+        
         return view('index', compact('users'));
     }
 
@@ -36,7 +37,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        User::create($request->only(['name', 'email']));
+        return redirect()->route('users.index');
     }
 
     /**
@@ -71,7 +73,8 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $response = $user->update($request->only(['name', 'email']));
+        return view('user_form', compact('user', 'response'));
     }
 
     /**
@@ -82,6 +85,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect()->route('users.index');
     }
 }
