@@ -39,8 +39,12 @@
         </tr>
       @endforeach
 
+      
+
   </tbody>
 </table>
+
+{{ $users->links('pagination::bootstrap-4') }}
 <div class="text-start">
 <a class="btn btn-primary mb-4" role="button" href="{{route('users.create')}}">Create</a>
 </div>
