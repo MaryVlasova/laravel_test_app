@@ -14,7 +14,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::get();
+       // $users = User::get();
+        $users = [
+            1=> ['id' => 1, 'name' => 'name', 'email' => 'email'],
+            2=> ['id' => 2, 'name' => 'name', 'email' => 'email'],
+            3=> ['id' => 3, 'name' => 'name', 'email' => 'email'],
+        ];
+            
         return view('index', compact('users'));
     }
 
@@ -47,6 +53,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+        
         return view('user_form');
     }
 
