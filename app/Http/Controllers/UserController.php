@@ -72,7 +72,7 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, UserRequest $user)
+    public function update(UserRequest $request, User $user)
     {
         $response = $user->update($request->only(['name', 'email']));
         return view('user_form', compact('user', 'response'));
